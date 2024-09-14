@@ -11,7 +11,6 @@ import SwiftUI
 /// That receives the corresponding Coordinator from the tabBarCoordinator
 struct TabBarView: View {
 	// MARK: - Properties
-	@EnvironmentObject var session: SessionManager
 	let coordinator: TabBarCoordinator
 	
 	// MARK: - Layout
@@ -19,9 +18,9 @@ struct TabBarView: View {
 		@Bindable var coordinator = coordinator
 		
 		ZStack {
-			switch session.currentState {
+			switch coordinator.session.currentState {
 			case .onboarding:
-				OnboardingView(actionHandler: session.completeOnboarding)
+				CoordinatedView(coordinator.onboardingSplashFlowCoordinator)
 					.transition(.opacity)
 			default:
 				TabView(selection: $coordinator.selectedTab) {
@@ -37,19 +36,25 @@ struct TabBarView: View {
 			}
 		}
 		.task {
-			session.configureCurrentState()
+			coordinator.session.configureCurrentState()
 		}
 	}
 }
 
+private extension CGFloat {
+	static let tabIconSize: Self = 22
+}
+
 private extension TabBarView {
-	@ViewBuilder func dashboardTabItem(_ tabItem: TabItem) -> some View {
+	@ViewBuilder
+	func dashboardTabItem(_ tabItem: TabItem) -> some View {
 		CoordinatedView(coordinator.dashboardFlowCoordinator)
 			.tabItem { itemContent(tabItem) }
 			.tag(tabItem)
 	}
 	
-	@ViewBuilder func settingsTabItem(_ tabItem: TabItem) -> some View {
+	@ViewBuilder
+	func settingsTabItem(_ tabItem: TabItem) -> some View {
 		CoordinatedView(coordinator.settingsFlowCoordinator)
 			.tabItem { itemContent(tabItem) }
 			.tag(tabItem)
@@ -62,7 +67,7 @@ private extension TabBarView {
 				.resizable()
 				.renderingMode(.template)
 				.aspectRatio(contentMode: .fit)
-				.frame(width: 22, height: 22)
+				.frame(width: .tabIconSize, height: .tabIconSize)
 				.frame(maxWidth: .infinity)
 			Text(tabItem.title)
 		}

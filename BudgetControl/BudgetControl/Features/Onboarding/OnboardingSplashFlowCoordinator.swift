@@ -1,49 +1,44 @@
 //
-//  SettingsFlowCoordinator.swift
+//  OnboardingSplashFlowCoordinator.swift
 //  BudgetControl
 //
-//  Created by Rogério Toledo on 13/09/24.
+//  Created by Rogério Toledo on 14/09/24.
 //
 
 import Foundation
 import SwiftUI
 
-enum SettingsFlowCoordinatorRoute: Codable, Hashable, Identifiable {
+enum OnboardingSplashFlowCoordinatorRoute: Codable, Hashable, Identifiable {
 	var id: String { String(describing: self) }
 	
-	case profile
 	case sheet
 	case cover
 }
 
-protocol SettingsFlowCoordinatorDelegate: AnyObject {
-	func selectTab(_ tab: TabItem)
-	func didFinish()
-}
-
-protocol SettingsFlowCoordinatorProtocol: FlowCoordinatorProtocol,
-										  AlertCoordinatorTrait,
-										  CoverCoordinatorProtocol,
-										  SheetCoordinatorProtocol {
-	var delegate: SettingsFlowCoordinatorDelegate? { get set }
+protocol OnboardingSplashFlowCoordinatorProtocol: FlowCoordinatorProtocol,
+												  AlertCoordinatorTrait,
+												  CoverCoordinatorProtocol,
+												  SheetCoordinatorProtocol {
 	var navigationController: NavigationController { get }
 	var rootView: RootView { get }
-	func goToProfile()
 }
 
-@Observable final class SettingsFlowCoordinator: SettingsFlowCoordinatorProtocol {
-	typealias Route = SettingsFlowCoordinatorRoute
+@Observable final class OnboardingSplashFlowCoordinator: OnboardingSplashFlowCoordinatorProtocol {
+	typealias Route = OnboardingSplashFlowCoordinatorRoute
 	
 	weak var delegate: SettingsFlowCoordinatorDelegate?
 	let navigationController: NavigationController
+	private var sessionManager: SessionManager
 	
-	init(navigationController: NavigationController = NavigationController()) {
+	init(sessionManager: SessionManager,
+		 navigationController: NavigationController = NavigationController()) {
+		self.sessionManager = sessionManager
 		self.navigationController = navigationController
 	}
 	
 	@ViewBuilder
 	var rootView: some View {
-		SettingsView(viewModel: SettingsViewModel(coordinator: self))
+		OnboardingView(actionHandler: sessionManager.completeOnboarding)
 			.navigationDestination(for: Route.self, destination: coordinate(_:))
 			.sheetDestination(for: Route.self, sheet: coordinate(_:))
 			.coverDestination(for: Route.self, cover: coordinate(_:))
@@ -58,16 +53,10 @@ protocol SettingsFlowCoordinatorProtocol: FlowCoordinatorProtocol,
 	}
 }
 
-extension SettingsFlowCoordinator {
-	func goToProfile() {
-		navigationController.push(Route.profile)
-	}
-	
+extension OnboardingSplashFlowCoordinator {
 	@ViewBuilder @MainActor
 	func coordinate(_ route: Route) -> some View {
 		switch route {
-		case .profile:
-			Text("Profile")
 		case .sheet:
 			Text("Sheet")
 		case .cover:

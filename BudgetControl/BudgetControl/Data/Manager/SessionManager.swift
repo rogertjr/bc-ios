@@ -7,7 +7,8 @@
 
 import Foundation
 
-final class SessionManager: ObservableObject {
+@Observable
+final class SessionManager {
 	
 	enum UserDefaultKeys {
 		static let hasSeenOnboarding = "hasSeenOnboarding"
@@ -21,7 +22,7 @@ final class SessionManager: ObservableObject {
 		case signup
 	}
 	
-	@Published private(set) var currentState: CurrentState?
+	private(set) var currentState: CurrentState?
 	
 	func signIn() {
 		currentState = .loggedIn

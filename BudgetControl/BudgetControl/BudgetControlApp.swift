@@ -11,14 +11,12 @@ import SwiftData
 @main
 struct BudgetControlApp: App {
 	// MARK: - Properties
-	let tabBarCoordinator = TabBarCoordinator()
-	@StateObject private var session = SessionManager()
+	let tabBarCoordinator = TabBarCoordinator(session: SessionManager(), selectedTab: .dashboard)
 
 	// MARK: - Layout
-    var body: some Scene {
-        WindowGroup {
+	var body: some Scene {
+		WindowGroup {
 			TabBarView(coordinator: tabBarCoordinator)
-				.environmentObject(session)
-        }
-    }
+		}
+	}
 }
