@@ -10,11 +10,15 @@ import SwiftData
 
 @main
 struct BudgetControlApp: App {
+	// MARK: - Properties
 	let tabBarCoordinator = TabBarCoordinator()
+	@StateObject private var session = SessionManager()
 
+	// MARK: - Layout
     var body: some Scene {
         WindowGroup {
 			TabBarView(coordinator: tabBarCoordinator)
+				.environmentObject(session)
         }
     }
 }
