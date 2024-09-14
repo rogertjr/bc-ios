@@ -3,13 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		D9284F392C1094E0002A7AA5 /* BudgetControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9284F382C1094E0002A7AA5 /* BudgetControlApp.swift */; };
-		D9284F3B2C1094E0002A7AA5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9284F3A2C1094E0002A7AA5 /* ContentView.swift */; };
-		D9284F3D2C1094E0002A7AA5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9284F3C2C1094E0002A7AA5 /* Item.swift */; };
 		D9284F3F2C1094E2002A7AA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9284F3E2C1094E2002A7AA5 /* Assets.xcassets */; };
 		D9284F422C1094E2002A7AA5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9284F412C1094E2002A7AA5 /* Preview Assets.xcassets */; };
 		D9284F4C2C1094E2002A7AA5 /* BudgetControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9284F4B2C1094E2002A7AA5 /* BudgetControlTests.swift */; };
@@ -37,8 +35,6 @@
 /* Begin PBXFileReference section */
 		D9284F352C1094E0002A7AA5 /* BudgetControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9284F382C1094E0002A7AA5 /* BudgetControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetControlApp.swift; sourceTree = "<group>"; };
-		D9284F3A2C1094E0002A7AA5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		D9284F3C2C1094E0002A7AA5 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D9284F3E2C1094E2002A7AA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9284F412C1094E2002A7AA5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D9284F472C1094E2002A7AA5 /* BudgetControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BudgetControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +43,16 @@
 		D9284F552C1094E2002A7AA5 /* BudgetControlUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetControlUITests.swift; sourceTree = "<group>"; };
 		D9284F572C1094E2002A7AA5 /* BudgetControlUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetControlUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3788F4A42C94F75400567A65 /* AppFlow */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AppFlow; sourceTree = "<group>"; };
+		3788F4A72C94FFDD00567A65 /* Dashboard */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Dashboard; sourceTree = "<group>"; };
+		3788F4B02C950A8B00567A65 /* TabBar */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TabBar; sourceTree = "<group>"; };
+		3788F4BC2C95161C00567A65 /* Settings */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Settings; sourceTree = "<group>"; };
+		3788F4C92C9518D200567A65 /* Common */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Common; sourceTree = "<group>"; };
+		3788F4CC2C95199500567A65 /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
+		3788F4CF2C9519A900567A65 /* Modifiers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Modifiers; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D9284F322C1094E0002A7AA5 /* Frameworks */ = {
@@ -96,9 +102,14 @@
 		D9284F372C1094E0002A7AA5 /* BudgetControl */ = {
 			isa = PBXGroup;
 			children = (
+				3788F4CF2C9519A900567A65 /* Modifiers */,
+				3788F4CC2C95199500567A65 /* Extensions */,
+				3788F4C92C9518D200567A65 /* Common */,
+				3788F4BC2C95161C00567A65 /* Settings */,
+				3788F4B02C950A8B00567A65 /* TabBar */,
+				3788F4A72C94FFDD00567A65 /* Dashboard */,
+				3788F4A42C94F75400567A65 /* AppFlow */,
 				D9284F382C1094E0002A7AA5 /* BudgetControlApp.swift */,
-				D9284F3A2C1094E0002A7AA5 /* ContentView.swift */,
-				D9284F3C2C1094E0002A7AA5 /* Item.swift */,
 				D9284F3E2C1094E2002A7AA5 /* Assets.xcassets */,
 				D9284F402C1094E2002A7AA5 /* Preview Content */,
 			);
@@ -144,6 +155,15 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				3788F4A42C94F75400567A65 /* AppFlow */,
+				3788F4A72C94FFDD00567A65 /* Dashboard */,
+				3788F4B02C950A8B00567A65 /* TabBar */,
+				3788F4BC2C95161C00567A65 /* Settings */,
+				3788F4C92C9518D200567A65 /* Common */,
+				3788F4CC2C95199500567A65 /* Extensions */,
+				3788F4CF2C9519A900567A65 /* Modifiers */,
 			);
 			name = BudgetControl;
 			productName = BudgetControl;
@@ -260,8 +280,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9284F3B2C1094E0002A7AA5 /* ContentView.swift in Sources */,
-				D9284F3D2C1094E0002A7AA5 /* Item.swift in Sources */,
 				D9284F392C1094E0002A7AA5 /* BudgetControlApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
